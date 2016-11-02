@@ -2,9 +2,9 @@ package tuxedo.wheel.concurrent;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-import java.util.stream.IntStream;
 
 import lombok.NonNull;
+import tuxedo.wheel.array.ArrayUtil;
 
 public class HashExecutor implements Executor {
     private final Executor[] workers;
@@ -13,9 +13,7 @@ public class HashExecutor implements Executor {
         if (nThreads <= 0) {
             throw new IllegalArgumentException("nThreads should be greater than 0!");
         }
-
-        this.workers = new Executor[nThreads];
-        IntStream.range(0, nThreads).forEach(i -> workers[i] = Executors.newSingleThreadExecutor());
+        this.workers = ArrayUtil.arrayFilledBySupplier(Executor.class, nThreads, Executors::newSingleThreadExecutor);
     }
 
     @Override

@@ -20,4 +20,27 @@ public class ArrayUtilTest {
         String[] actual = ArrayUtil.arrayFilledByValue(String.class, expected.length, "a");
         Assert.assertEquals(actual, expected);
     }
+
+    @Test
+    public void testReverse() {
+        __testReverse(new String[] { "d", "c", "b", "a" }, new String[] { "a", "b", "c", "d" });
+        __testReverse(new String[] { "e", "d", "c", "b", "a" }, new String[] { "a", "b", "c", "d", "e" });
+    }
+
+    private void __testReverse(String[] original, String[] expected) {
+        ArrayUtil.reverse(original);
+        Assert.assertEquals(original, expected);
+    }
+
+    @Test
+    public void testCopyAndReverse() {
+        __testCopyAndReverse(new String[] { "d", "c", "b", "a" }, new String[] { "a", "b", "c", "d" });
+        __testCopyAndReverse(new String[] { "e", "d", "c", "b", "a" }, new String[] { "a", "b", "c", "d", "e" });
+    }
+
+    private void __testCopyAndReverse(String[] original, String[] expected) {
+        String[] reversed = ArrayUtil.copyAndReverse(original);
+        Assert.assertNotSame(reversed, original);
+        Assert.assertEquals(reversed, expected);
+    }
 }
