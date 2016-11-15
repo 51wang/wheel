@@ -2,10 +2,14 @@ package tuxedo.wheel.io;
 
 import java.io.File;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.taskdefs.Zip;
 import org.apache.tools.ant.types.FileSet;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class FileUtil {
     public static void toZip(File dir, File destFile) {
         Project project = new Project();

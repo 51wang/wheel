@@ -5,8 +5,11 @@ import java.util.Arrays;
 import java.util.function.Supplier;
 import java.util.stream.IntStream;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ArrayUtil {
     @SuppressWarnings("unchecked")
     public static <T> T[] arrayFilledBySupplier(@NonNull Class<T> componentType, int length, @NonNull Supplier<? extends T> supplier) {
