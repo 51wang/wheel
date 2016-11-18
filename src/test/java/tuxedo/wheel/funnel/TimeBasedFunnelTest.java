@@ -13,7 +13,7 @@ public class TimeBasedFunnelTest {
     private final static int WORKERS = 20;
     private final static long WAIT = 100;
     private final static long INTERVAL_MILLIS = 10000;
-    private final Funnel funnel = new TimeBasedFunnel(INTERVAL_MILLIS);
+    private final Funnel funnel = new TimeBasedFunnel(INTERVAL_MILLIS, true);
     private final AtomicLong dripped = new AtomicLong();
 
     @Test(invocationCount = WORKERS, threadPoolSize = WORKERS)

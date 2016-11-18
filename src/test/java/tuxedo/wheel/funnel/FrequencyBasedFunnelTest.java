@@ -10,7 +10,7 @@ public class FrequencyBasedFunnelTest {
     private final static int LOOP = 10000;
     private final static int WORKERS = 20;
     private final static long FREQUENCY = 7;
-    private final Funnel funnel = new FrequencyBasedFunnel(FREQUENCY);
+    private final Funnel funnel = new FrequencyBasedFunnel(FREQUENCY, true);
     private final AtomicLong dripped = new AtomicLong();
 
     @Test(invocationCount = WORKERS, threadPoolSize = WORKERS)
