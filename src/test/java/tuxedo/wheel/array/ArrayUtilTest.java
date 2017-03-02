@@ -1,16 +1,20 @@
 package tuxedo.wheel.array;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ArrayUtilTest {
     @Test
-    public void testArrayFilledBySupplier() {
-        AtomicInteger index = new AtomicInteger();
+    public void testArrayFilledByGenerator() {
         String[] expected = new String[] { "a", "b", "c", "d", "e", "f" };
-        String[] actual = ArrayUtil.arrayFilledBySupplier(String.class, expected.length, () -> expected[index.getAndIncrement()]);
+        String[] actual = ArrayUtil.arrayFilledByGenerator(String.class, expected.length, i -> expected[i]);
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test
+    public void testArrayFilledBySupplier() {
+        String[] expected = new String[] { "a", "a", "a", "a" };
+        String[] actual = ArrayUtil.arrayFilledBySupplier(String.class, expected.length, () -> new String("a"));
         Assert.assertEquals(actual, expected);
     }
 
@@ -23,6 +27,7 @@ public class ArrayUtilTest {
 
     @Test
     public void testReverse() {
+        __testReverse(new String[0], new String[0]);
         __testReverse(new String[] { "d", "c", "b", "a" }, new String[] { "a", "b", "c", "d" });
         __testReverse(new String[] { "e", "d", "c", "b", "a" }, new String[] { "a", "b", "c", "d", "e" });
     }

@@ -14,22 +14,22 @@ public class StdInUtil {
     }
 
     public static float nextFloat() throws IOException {
-        return Float.valueOf(nextLine());
+        return Float.parseFloat(nextLine());
     }
 
     public static double nextDouble() throws IOException {
-        return Double.valueOf(nextLine());
+        return Double.parseDouble(nextLine());
     }
 
     public static int nextInt() throws IOException {
-        return Integer.valueOf(nextLine());
+        return Integer.parseInt(nextLine());
     }
 
     public static long nextLong() throws IOException {
-        return Long.valueOf(nextLine());
+        return Long.parseLong(nextLine());
     }
 
     public static boolean nextBoolean() throws IOException {
-        return Boolean.valueOf(nextLine());
+        return Boolean.parseBoolean(nextLine());
     }
 }

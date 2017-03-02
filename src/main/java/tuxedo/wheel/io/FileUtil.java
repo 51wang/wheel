@@ -23,14 +23,18 @@ public class FileUtil {
         zip.execute();
     }
 
-    public static void deleteRecursively(File path) {
-        if (path.exists()) {
-            if (path.isDirectory()) {
-                for (File child : path.listFiles()) {
-                    deleteRecursively(child);
+    public static boolean deleteRecursively(File path) {
+        if (!path.exists()) {
+            return true;
+        }
+
+        if (path.isDirectory()) {
+            for (File child : path.listFiles()) {
+                if (!deleteRecursively(child)) {
+                    return false;
                 }
             }
-            path.delete();
         }
+        return path.delete();
     }
 }

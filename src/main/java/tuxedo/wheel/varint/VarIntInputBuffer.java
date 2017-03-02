@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class VarIntInputBuffer {
     private final @NonNull InputStream is;
-    private final byte[] buf = new byte[2];
+    private final byte[] buf = new byte[1];
 
     public byte[] read(int len) throws IOException {
         byte[] b = new byte[len];
@@ -26,13 +26,12 @@ public class VarIntInputBuffer {
     }
 
     public byte readByte() throws IOException {
-        read(buf, 0, 1);
+        read(buf);
         return buf[0];
     }
 
     public short readShort() throws IOException {
-        read(buf, 0, 2);
-        return (short) (((buf[0] & 0xff) << 8) | ((buf[1] & 0xff)));
+        return (short) (((readByte() & 0xff) << 8) | ((readByte() & 0xff)));
     }
 
     public int readVarInt() throws IOException {

@@ -1,26 +1,22 @@
 package tuxedo.wheel.property;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import lombok.NonNull;
 
 public class JointProperties implements Properties {
-    protected final List<Properties> sources = new ArrayList<>();
+    private final List<Properties> sources;
 
-    public JointProperties(@NonNull Properties... sources) {
+    public JointProperties(Properties... sources) {
         this(Arrays.asList(sources));
     }
 
     public JointProperties(@NonNull List<Properties> sources) {
-        for (Properties properties : sources) {
-            if (properties != null) {
-                this.sources.add(properties);
-            }
-        }
+        this.sources = sources.stream().filter(p -> p != null).distinct().collect(Collectors.toList());
     }
 
     @Override

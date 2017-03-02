@@ -24,12 +24,12 @@ public class TemplatePool {
         configuration.setTemplateLoader(templateLoader);
     }
 
-    public TemplatePool importText(@NonNull String templateName, @NonNull String templateText) {
+    public TemplatePool importText(String templateName, String templateText) {
         templateLoader.putTemplate(templateName, templateText);
         return this;
     }
 
-    public TemplatePool importFile(String templateName, @NonNull String templateFile) throws IOException {
+    public TemplatePool importFile(String templateName, String templateFile) throws IOException {
         return importText(templateName, Files.toString(new File(templateFile), Charsets.UTF_8));
     }
 

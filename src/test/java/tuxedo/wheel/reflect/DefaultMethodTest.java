@@ -6,14 +6,14 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class DefaultMethodTest {
-    @Test(expectedExceptions = { WrongMethodTypeException.class })
+    @Test(threadPoolSize = 10, invocationCount = 100, expectedExceptions = { WrongMethodTypeException.class })
     public void testNonDefault() throws ReflectiveOperationException {
-        new DefaultMethod(Student.class.getDeclaredMethod("id"));
+        DefaultMethod.newInstance(Student.class.getDeclaredMethod("id"));
     }
 
-    @Test
+    @Test(threadPoolSize = 10, invocationCount = 100)
     public void testDefault() throws Throwable {
-        Assert.assertEquals(new DefaultMethod(Student.class.getDeclaredMethod("name")).invoke(null), "unknown");
+        Assert.assertEquals(DefaultMethod.newInstance(Student.class.getDeclaredMethod("name")).invoke(null), "unknown");
     }
 
     private static interface Student {

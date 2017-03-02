@@ -1,11 +1,10 @@
 package tuxedo.wheel.funnel;
 
-public class TimeBasedFunnel extends AbstractFunnel {
+public class TimeBasedFunnel implements Funnel {
     private final long intervalMillis;
     private long next = 0;
 
-    public TimeBasedFunnel(long intervalMillis, boolean concurrent) {
-        super(concurrent);
+    public TimeBasedFunnel(long intervalMillis) {
         if (intervalMillis <= 0) {
             throw new IllegalArgumentException("IntervalMillis should be positive!");
         }
@@ -13,7 +12,7 @@ public class TimeBasedFunnel extends AbstractFunnel {
     }
 
     @Override
-    protected boolean __canDrip() {
+    public boolean canDrip() {
         long now = System.currentTimeMillis();
         if (now >= next) {
             next = now + intervalMillis;

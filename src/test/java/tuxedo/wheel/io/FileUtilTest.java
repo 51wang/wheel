@@ -20,7 +20,7 @@ public class FileUtilTest {
 
     @Test
     public void testDeleteRecursively() throws IOException {
-        File root = new File("target/test/").getAbsoluteFile();
+        File root = new File("target/xyz/").getAbsoluteFile();
         root.mkdir();
         File dir1 = new File(root, "a");
         dir1.mkdir();
@@ -32,7 +32,7 @@ public class FileUtilTest {
         new File(dir3, "y").createNewFile();
         new File(dir3, "z").createNewFile();
         Assert.assertTrue(root.exists());
-        FileUtil.deleteRecursively(root);
+        Assert.assertTrue(FileUtil.deleteRecursively(root));
         Assert.assertFalse(root.exists());
     }
 }

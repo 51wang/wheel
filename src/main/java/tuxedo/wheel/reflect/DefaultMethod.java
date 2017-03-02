@@ -7,23 +7,33 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
+import lombok.NonNull;
+
 public class DefaultMethod {
+    private static Lookup implLookup;
     private final MethodHandle methodHandle;
 
-    public DefaultMethod(Method method) throws ReflectiveOperationException {
-        if (!method.isDefault()) {
-            throw new WrongMethodTypeException("Should be a default method!");
-        }
-
-        final Class<?> declaringClass = method.getDeclaringClass();
-        Field field = Lookup.class.getDeclaredField("IMPL_LOOKUP");
-        field.setAccessible(true);
-        Lookup lookup = ((Lookup) field.get(null)).in(declaringClass);
-        methodHandle = lookup.unreflectSpecial(method, declaringClass).bindTo(
-                Proxy.newProxyInstance(declaringClass.getClassLoader(), new Class[] { declaringClass }, (_proxy, _method, _args) -> null));
+    private DefaultMethod(Method method) throws IllegalAccessException {
+        Class<?> declaringClass = method.getDeclaringClass();
+        methodHandle = implLookup.in(declaringClass).unreflectSpecial(method, declaringClass)
+                .bindTo(Proxy.newProxyInstance(declaringClass.getClassLoader(), new Class[] { declaringClass }, (_proxy, _method, _args) -> null));
     }
 
     public Object invoke(Object[] args) throws Throwable {
         return methodHandle.invokeWithArguments(args);
+    }
+
+    public static DefaultMethod newInstance(@NonNull Method method) throws WrongMethodTypeException, ReflectiveOperationException {
+        if (!method.isDefault()) {
+            throw new WrongMethodTypeException("Method should be default!");
+        }
+
+        if (implLookup == null) {
+            Field field = Lookup.class.getDeclaredField("IMPL_LOOKUP");
+            field.setAccessible(true);
+            implLookup = ((Lookup) field.get(null));
+        }
+
+        return new DefaultMethod(method);
     }
 }

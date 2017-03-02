@@ -11,7 +11,7 @@ public class StackDepthCounterTest {
         counter.enter();
         Assert.assertTrue(counter.quit());
         counter.enter();
-        counter.clear();
+        counter.reset();
         counter.enter();
         Assert.assertTrue(counter.quit());
         counter.enter();

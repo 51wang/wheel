@@ -27,7 +27,7 @@ public class JointPropertiesTest {
         expected.put("a", "a1");
         expected.put("b", "b1");
         expected.put("c", "c2");
-        Properties properties = new JointProperties(new BasicProperties(source1), new BasicProperties(source2));
+        Properties properties = new JointProperties(new BasicProperties(source1), null, new BasicProperties(source2));
         Assert.assertFalse(properties.isEmpty());
         Assert.assertEquals(properties.getProperties(), expected);
         Assert.assertEquals(properties.getProperty("a"), "a1");

@@ -11,7 +11,7 @@ public class StackDepthCounter {
         return (--holder.get().depth) == 0;
     }
 
-    public void clear() {
+    public void reset() {
         holder.get().depth = 0;
     }
 

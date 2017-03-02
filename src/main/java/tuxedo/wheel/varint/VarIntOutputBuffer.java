@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class VarIntOutputBuffer {
     private final @NonNull OutputStream os;
-    private final byte[] buf = new byte[2];
+    private final byte[] buf = new byte[1];
 
     public void write(byte[] b) throws IOException {
         os.write(b);
@@ -21,13 +21,12 @@ public class VarIntOutputBuffer {
 
     public void writeByte(byte v) throws IOException {
         buf[0] = v;
-        write(buf, 0, 1);
+        write(buf);
     }
 
     public void writeShort(short v) throws IOException {
-        buf[0] = (byte) (0xff & (v >> 8));
-        buf[1] = (byte) (0xff & (v));
-        write(buf, 0, 2);
+        writeByte((byte) (0xff & (v >> 8)));
+        writeByte((byte) (0xff & (v)));
     }
 
     public void writeVarInt(int v) throws IOException {

@@ -11,10 +11,8 @@ public interface SetComparator<E> extends ObjectComparator<Set<E>> {
         Stream.concat(from.stream(), to.stream()).filter(e -> e != null).distinct().forEach(e -> {
             if (!from.contains(e)) {
                 added(e);
-            } else {
-                if (!to.contains(e)) {
-                    removed(e);
-                }
+            } else if (!to.contains(e)) {
+                removed(e);
             }
         });
     }

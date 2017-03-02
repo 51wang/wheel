@@ -1,11 +1,10 @@
 package tuxedo.wheel.funnel;
 
-public class FrequencyBasedFunnel extends AbstractFunnel {
+public class FrequencyBasedFunnel implements Funnel {
     private final long frequency;
     private long counter = 0;
 
-    public FrequencyBasedFunnel(long frequency, boolean concurrent) {
-        super(concurrent);
+    public FrequencyBasedFunnel(long frequency) {
         if (frequency <= 0) {
             throw new IllegalArgumentException("Frequency should be positive!");
         }
@@ -13,7 +12,7 @@ public class FrequencyBasedFunnel extends AbstractFunnel {
     }
 
     @Override
-    protected boolean __canDrip() {
+    public boolean canDrip() {
         boolean canDrip = false;
         if (counter++ == 0) {
             canDrip = true;
