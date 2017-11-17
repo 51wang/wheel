@@ -1,5 +1,8 @@
 package tuxedo.wheel.array;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -47,5 +50,16 @@ public class ArrayUtilTest {
         String[] reversed = ArrayUtil.copyAndReverse(original);
         Assert.assertNotSame(reversed, original);
         Assert.assertEquals(reversed, expected);
+    }
+
+    @Test
+    public void testAsList() {
+        List<String> actual = ArrayUtil.asList(new String[] { "a", "b", "c", "d" });
+        List<String> expected = new ArrayList<>();
+        expected.add("a");
+        expected.add("b");
+        expected.add("c");
+        expected.add("d");
+        Assert.assertEquals(actual, expected);
     }
 }

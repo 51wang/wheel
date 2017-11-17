@@ -1,7 +1,10 @@
 package tuxedo.wheel.array;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.function.IntFunction;
 import java.util.function.Supplier;
 
@@ -29,7 +32,7 @@ public class ArrayUtil {
         return arrayFilledByGenerator(componentType, length, i -> value);
     }
 
-    public static <T> void reverse(T[] array) {
+    public static <T> void reverse(@NonNull T[] array) {
         final int length = array.length;
         T tmp;
         for (int i = 0; i < length / 2; i++) {
@@ -39,9 +42,15 @@ public class ArrayUtil {
         }
     }
 
-    public static <T> T[] copyAndReverse(T[] original) {
+    public static <T> T[] copyAndReverse(@NonNull T[] original) {
         T[] copy = Arrays.copyOf(original, original.length);
         reverse(copy);
         return copy;
+    }
+
+    public static <T> List<T> asList(@NonNull T[] array) {
+        List<T> list = new ArrayList<T>(array.length);
+        Collections.addAll(list, array);
+        return list;
     }
 }
