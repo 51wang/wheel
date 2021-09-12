@@ -34,7 +34,7 @@ public class JvmArgsParser implements JvmArgsUtils, JvmArgsConsts {
 
     /* 解析一串JVM参数 */
     public List<JvmArg> parseJvmArgs(String raw) {
-        List<JvmArg> argList = Arrays.stream(raw.split(" ")).map(this::parseJvmArg).filter(arg -> arg != null).collect(Collectors.toList());
+        List<JvmArg> argList = Arrays.stream(raw.split(SPACE)).map(this::parseJvmArg).filter(arg -> arg != null).collect(Collectors.toList());
         mapping(argList);
         return argList;
     }

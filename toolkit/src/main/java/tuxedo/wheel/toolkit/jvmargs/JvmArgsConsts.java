@@ -1,6 +1,7 @@
 package tuxedo.wheel.toolkit.jvmargs;
 
 public interface JvmArgsConsts {
+    final static String SPACE = " ";
     final static String HYPHEN = "-";
     final static String COLON = ":";
     final static String EQUAL = "=";
