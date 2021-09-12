@@ -131,6 +131,7 @@
 		</plugins>
 	</build>
 	<modules>
+		<module>toolkit</module>
 		<module>utility</module>
 		<module>workbook</module>
 	</modules>
