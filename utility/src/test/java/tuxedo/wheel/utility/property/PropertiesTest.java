@@ -1,13 +1,12 @@
 package tuxedo.wheel.utility.property;
 
+import lombok.NonNull;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
-import lombok.NonNull;
-
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 public class PropertiesTest {
     private final Properties properties = new __Properties();
@@ -28,7 +27,8 @@ public class PropertiesTest {
     }
 
     private static class __Properties implements Properties {
-        final @NonNull Map<String, String> source = new HashMap<>();
+        final @NonNull
+        Map<String, String> source = new HashMap<>();
 
         __Properties() {
             source.put("string", "test");

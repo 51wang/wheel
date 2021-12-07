@@ -1,11 +1,11 @@
 package tuxedo.wheel.utility.io;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class StdInUtil {

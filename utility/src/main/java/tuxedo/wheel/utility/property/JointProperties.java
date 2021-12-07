@@ -1,12 +1,12 @@
 package tuxedo.wheel.utility.property;
 
+import lombok.NonNull;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import lombok.NonNull;
 
 public class JointProperties implements Properties {
     private final List<Properties> sources;

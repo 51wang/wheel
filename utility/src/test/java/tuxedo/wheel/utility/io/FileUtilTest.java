@@ -1,10 +1,10 @@
 package tuxedo.wheel.utility.io;
 
-import java.io.File;
-import java.io.IOException;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.io.File;
+import java.io.IOException;
 
 public class FileUtilTest {
     @Test

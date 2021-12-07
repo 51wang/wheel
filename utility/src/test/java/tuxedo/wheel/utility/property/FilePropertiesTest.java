@@ -1,15 +1,15 @@
 package tuxedo.wheel.utility.property;
 
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
 public class FilePropertiesTest {
-    @Test(expectedExceptions = { FileNotFoundException.class })
+    @Test(expectedExceptions = {FileNotFoundException.class})
     public void testNonExistent() throws IOException {
         new FileProperties("src/test/resources/nonExistent.properties");
     }

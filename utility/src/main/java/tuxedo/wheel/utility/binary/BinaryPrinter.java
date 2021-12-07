@@ -1,14 +1,15 @@
 package tuxedo.wheel.utility.binary;
 
-import java.io.IOException;
-import java.io.OutputStream;
-
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
+import java.io.IOException;
+import java.io.OutputStream;
+
 @RequiredArgsConstructor
 public class BinaryPrinter {
-    private final @NonNull OutputStream outputStream;
+    @NonNull
+    private final OutputStream outputStream;
     private ByteEncoder byteEncoder = ByteEncoder.TO_HEX;
     private byte[] lineSeparator = "\n".getBytes();
     private byte[] blockSeparator = "\t".getBytes();

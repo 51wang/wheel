@@ -1,13 +1,12 @@
 package tuxedo.wheel.utility.io;
 
-import java.io.File;
-
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.taskdefs.Zip;
 import org.apache.tools.ant.types.FileSet;
+
+import java.io.File;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class FileUtil {

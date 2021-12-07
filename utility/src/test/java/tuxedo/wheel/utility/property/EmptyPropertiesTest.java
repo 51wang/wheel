@@ -1,9 +1,9 @@
 package tuxedo.wheel.utility.property;
 
-import java.util.HashMap;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.HashMap;
 
 public class EmptyPropertiesTest {
     @Test

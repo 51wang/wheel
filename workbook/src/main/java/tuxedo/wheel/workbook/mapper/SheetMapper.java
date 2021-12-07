@@ -1,11 +1,11 @@
 package tuxedo.wheel.workbook.mapper;
 
-import java.util.stream.IntStream;
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+
+import java.util.stream.IntStream;
 
 public abstract class SheetMapper {
     protected abstract String getSheetName();
@@ -29,7 +29,8 @@ public abstract class SheetMapper {
     }
 
     private void writeRow(Row row, int rowIndex) {
-        IntStream.range(0, getColumnCount(rowIndex)).forEach(columnIndex -> writeCell(row.createCell(columnIndex), rowIndex, columnIndex));
+        IntStream.range(0, getColumnCount(rowIndex))
+                .forEach(columnIndex -> writeCell(row.createCell(columnIndex), rowIndex, columnIndex));
     }
 
     private void writeCell(Cell cell, int rowIndex, int columnIndex) {

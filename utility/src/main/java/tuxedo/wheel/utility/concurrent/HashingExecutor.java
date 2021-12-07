@@ -1,10 +1,10 @@
 package tuxedo.wheel.utility.concurrent;
 
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-
 import lombok.NonNull;
 import tuxedo.wheel.utility.array.ArrayUtil;
+
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class HashingExecutor implements Executor {
     private final Executor[] workers;

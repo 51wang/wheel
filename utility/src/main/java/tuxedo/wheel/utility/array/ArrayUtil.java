@@ -1,5 +1,9 @@
 package tuxedo.wheel.utility.array;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,14 +16,11 @@ import java.util.function.IntFunction;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ArrayUtil {
     @SuppressWarnings("unchecked")
-    public static <T> T[] arrayFilledByGenerator(@NonNull Class<T> componentType, int length, IntFunction<? extends T> generator) {
+    public static <T> T[] arrayFilledByGenerator(@NonNull Class<T> componentType, int length,
+            IntFunction<? extends T> generator) {
         if (length < 0) {
             throw new IllegalArgumentException("Size should be non-negative!");
         }
@@ -28,7 +29,8 @@ public class ArrayUtil {
         return array;
     }
 
-    public static <T> T[] arrayFilledBySupplier(Class<T> componentType, int length, @NonNull Supplier<? extends T> supplier) {
+    public static <T> T[] arrayFilledBySupplier(Class<T> componentType, int length,
+            @NonNull Supplier<? extends T> supplier) {
         return arrayFilledByGenerator(componentType, length, i -> supplier.get());
     }
 

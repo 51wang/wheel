@@ -1,9 +1,9 @@
 package tuxedo.wheel.utility.comparator;
 
+import lombok.NonNull;
+
 import java.util.Set;
 import java.util.stream.Stream;
-
-import lombok.NonNull;
 
 public interface SetComparator<E> extends ObjectComparator<Set<E>> {
     @Override

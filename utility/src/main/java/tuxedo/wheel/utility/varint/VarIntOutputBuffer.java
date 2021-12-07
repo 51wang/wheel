@@ -1,14 +1,15 @@
 package tuxedo.wheel.utility.varint;
 
-import java.io.IOException;
-import java.io.OutputStream;
-
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
+import java.io.IOException;
+import java.io.OutputStream;
+
 @RequiredArgsConstructor
 public class VarIntOutputBuffer {
-    private final @NonNull OutputStream os;
+    @NonNull
+    private final OutputStream os;
     private final byte[] buf = new byte[1];
 
     public void write(byte[] b) throws IOException {
@@ -30,7 +31,7 @@ public class VarIntOutputBuffer {
     }
 
     public void writeVarInt(int v) throws IOException {
-        for (;;) {
+        for (; ; ) {
             if ((v & ~0x7F) == 0) {
                 writeByte((byte) v);
                 break;
@@ -43,7 +44,7 @@ public class VarIntOutputBuffer {
 
     public void writeVarLong(long v) throws IOException {
         int len = 0;
-        for (;;) {
+        for (; ; ) {
             if ((v & ~0x7FL) == 0 || len == 8) {
                 writeByte((byte) v);
                 break;

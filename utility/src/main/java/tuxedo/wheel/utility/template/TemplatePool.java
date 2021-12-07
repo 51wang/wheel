@@ -1,20 +1,18 @@
 package tuxedo.wheel.utility.template;
 
+import com.google.common.base.Charsets;
+import com.google.common.io.Files;
+import com.google.common.io.Resources;
+import freemarker.cache.StringTemplateLoader;
+import freemarker.template.Configuration;
+import freemarker.template.TemplateException;
+import lombok.NonNull;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-
-import lombok.NonNull;
-
-import com.google.common.base.Charsets;
-import com.google.common.io.Files;
-import com.google.common.io.Resources;
-
-import freemarker.cache.StringTemplateLoader;
-import freemarker.template.Configuration;
-import freemarker.template.TemplateException;
 
 public class TemplatePool {
     protected final Configuration configuration = new Configuration(Configuration.VERSION_2_3_23);
@@ -38,7 +36,7 @@ public class TemplatePool {
     }
 
     public String execute(@NonNull String templateName, Object dataModel) throws IOException, TemplateException {
-        try (OutputStream os = new ByteArrayOutputStream(); OutputStreamWriter osw = new OutputStreamWriter(os);) {
+        try (OutputStream os = new ByteArrayOutputStream(); OutputStreamWriter osw = new OutputStreamWriter(os)) {
             configuration.getTemplate(templateName).process(dataModel, osw);
             return os.toString();
         }

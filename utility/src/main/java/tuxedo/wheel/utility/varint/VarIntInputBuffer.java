@@ -1,14 +1,15 @@
 package tuxedo.wheel.utility.varint;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 @RequiredArgsConstructor
 public class VarIntInputBuffer {
-    private final @NonNull InputStream is;
+    private final @NonNull
+    InputStream is;
     private final byte[] buf = new byte[1];
 
     public byte[] read(int len) throws IOException {
@@ -37,7 +38,7 @@ public class VarIntInputBuffer {
     public int readVarInt() throws IOException {
         int v = 0;
         int len = 0;
-        for (;;) {
+        for (; ; ) {
             byte b = readByte();
             if ((b & ~0x7F) == 0) {
                 v += (b & 0xFF) << (len * 7);
@@ -52,7 +53,7 @@ public class VarIntInputBuffer {
     public long readVarLong() throws IOException {
         long v = 0;
         int len = 0;
-        for (;;) {
+        for (; ; ) {
             byte b = readByte();
             if ((b & ~0x7FL) == 0 || len == 8) {
                 v += (b & 0xFFL) << (len * 7);

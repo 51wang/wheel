@@ -1,11 +1,11 @@
 package tuxedo.wheel.toolkit.jvmargs;
 
+import tuxedo.wheel.toolkit.jvmargs.model.JvmArg;
+import tuxedo.wheel.toolkit.jvmargs.model.JvmArgIdentifier;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import tuxedo.wheel.toolkit.jvmargs.model.JvmArg;
-import tuxedo.wheel.toolkit.jvmargs.model.JvmArgIdentifier;
 
 public interface JvmArgsUtils {
     default IllegalArgumentException newIllegalArgumentException(String raw) {
@@ -41,7 +41,8 @@ public interface JvmArgsUtils {
         for (JvmArg arg : argList) {
             JvmArg previous = argMap.put(new JvmArgIdentifier(arg), arg);
             if (previous != null) {
-                throw new IllegalArgumentException("conflicting JVM ARGs  :  \"" + arg.getRaw() + "\" and \"" + previous.getRaw() + "\"");
+                throw new IllegalArgumentException(
+                        "conflicting JVM ARGs  :  \"" + arg.getRaw() + "\" and \"" + previous.getRaw() + "\"");
             }
         }
         return argMap;

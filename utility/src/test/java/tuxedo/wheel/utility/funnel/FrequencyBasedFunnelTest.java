@@ -1,10 +1,10 @@
 package tuxedo.wheel.utility.funnel;
 
-import java.util.concurrent.atomic.AtomicLong;
-
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
+
+import java.util.concurrent.atomic.AtomicLong;
 
 public class FrequencyBasedFunnelTest {
     private final static int LOOP = 10000;

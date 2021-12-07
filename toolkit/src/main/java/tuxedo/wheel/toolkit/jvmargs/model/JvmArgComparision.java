@@ -21,7 +21,9 @@ public class JvmArgComparision {
         }
     }
 
-    public static enum Result {
-        SAME, DIFF, UNIQUE
+    public enum Result {
+        SAME,
+        DIFF,
+        UNIQUE
     }
 }

@@ -1,14 +1,15 @@
 package tuxedo.wheel.utility.property;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RequiredArgsConstructor
 public class BasicProperties implements Properties {
-    protected final @NonNull Map<String, String> source;
+    @NonNull
+    protected final Map<String, String> source;
 
     @Override
     public boolean isEmpty() {

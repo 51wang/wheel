@@ -1,9 +1,9 @@
 package tuxedo.wheel.utility.comparator;
 
+import lombok.NonNull;
+
 import java.util.Map;
 import java.util.stream.Stream;
-
-import lombok.NonNull;
 
 public interface MapComparator<K, V> extends ObjectComparator<Map<K, V>> {
     @Override

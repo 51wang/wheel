@@ -8,11 +8,6 @@ public abstract class StandardSheetMapper extends SheetMapper {
     protected abstract ColumnMapper[] getColumnMappers();
 
     @Override
-    protected void prepare() {
-        columnMappers = getColumnMappers();
-    }
-
-    @Override
     protected final int getRowCount() {
         return getDataRowCount() + 1;
     }
@@ -25,6 +20,11 @@ public abstract class StandardSheetMapper extends SheetMapper {
     @Override
     protected final String getCellValue(int rowIndex, int columnIndex) {
         return columnMappers[columnIndex].getValue(rowIndex);
+    }
+
+    @Override
+    protected void prepare() {
+        columnMappers = getColumnMappers();
     }
 
     protected interface ColumnMapper {

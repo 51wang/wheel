@@ -1,15 +1,14 @@
 package tuxedo.wheel.utility.concurrent;
 
+import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.Test;
+import tuxedo.wheel.utility.array.ArrayUtil;
+
 import java.util.concurrent.Executor;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
-
-import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.Test;
-
-import tuxedo.wheel.utility.array.ArrayUtil;
 
 public class HashingExecutorTest {
     private final static int LOOP = 1000;
@@ -17,7 +16,8 @@ public class HashingExecutorTest {
     private final Executor executor = new HashingExecutor(WORKERS);
     private final AtomicInteger counter = new AtomicInteger();
     private final AtomicBoolean fail = new AtomicBoolean();
-    private final AtomicInteger[] records = ArrayUtil.arrayFilledBySupplier(AtomicInteger.class, WORKERS, () -> new AtomicInteger());
+    private final AtomicInteger[] records =
+            ArrayUtil.arrayFilledBySupplier(AtomicInteger.class, WORKERS, () -> new AtomicInteger());
 
     @Test(invocationCount = WORKERS, threadPoolSize = WORKERS)
     public void test() {

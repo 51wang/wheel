@@ -1,9 +1,9 @@
 package tuxedo.wheel.utility.concurrent;
 
-import java.util.concurrent.ThreadFactory;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.concurrent.ThreadFactory;
 
 public class NameableThreadFactoryTest {
     @Test

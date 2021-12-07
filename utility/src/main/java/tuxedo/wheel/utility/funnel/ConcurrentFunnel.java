@@ -5,7 +5,8 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class ConcurrentFunnel implements Funnel {
-    private final @NonNull Funnel impl;
+    @NonNull
+    private final Funnel impl;
 
     @Override
     public final boolean canDrip() {

@@ -1,10 +1,10 @@
 package tuxedo.wheel.utility.assembler;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class SetAssemblerTest {
     @Test

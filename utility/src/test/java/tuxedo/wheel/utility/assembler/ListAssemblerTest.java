@@ -1,10 +1,10 @@
 package tuxedo.wheel.utility.assembler;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ListAssemblerTest {
     @Test

@@ -1,14 +1,13 @@
 package tuxedo.wheel.utility.template;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
+import freemarker.template.TemplateException;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import freemarker.template.TemplateException;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TemplatePoolTest {
     private final TemplatePool templatePool = new TemplatePool();

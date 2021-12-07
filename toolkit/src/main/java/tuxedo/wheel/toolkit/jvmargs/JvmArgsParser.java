@@ -1,14 +1,14 @@
 package tuxedo.wheel.toolkit.jvmargs;
 
+import tuxedo.wheel.toolkit.jvmargs.model.JvmArg;
+import tuxedo.wheel.toolkit.jvmargs.model.JvmArgComparision;
+import tuxedo.wheel.toolkit.jvmargs.model.JvmArgIdentifier;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import tuxedo.wheel.toolkit.jvmargs.model.JvmArg;
-import tuxedo.wheel.toolkit.jvmargs.model.JvmArgComparision;
-import tuxedo.wheel.toolkit.jvmargs.model.JvmArgIdentifier;
 
 public class JvmArgsParser implements JvmArgsUtils, JvmArgsConsts {
     /* 解析一项JVM参数 */
@@ -34,7 +34,8 @@ public class JvmArgsParser implements JvmArgsUtils, JvmArgsConsts {
 
     /* 解析一串JVM参数 */
     public List<JvmArg> parseJvmArgs(String raw) {
-        List<JvmArg> argList = Arrays.stream(raw.split(SPACE)).map(this::parseJvmArg).filter(arg -> arg != null).collect(Collectors.toList());
+        List<JvmArg> argList = Arrays.stream(raw.split(SPACE)).map(this::parseJvmArg).filter(arg -> arg != null)
+                .collect(Collectors.toList());
         mapping(argList);
         return argList;
     }
@@ -49,6 +50,7 @@ public class JvmArgsParser implements JvmArgsUtils, JvmArgsConsts {
         Map<JvmArgIdentifier, JvmArg> argMap1 = mapping(argList1), argMap2 = mapping(argList2);
         return Stream.concat(argMap1.keySet().stream(), argMap2.keySet().stream()).distinct()
                 .map(identifier -> new JvmArgComparision(argMap1.get(identifier), argMap2.get(identifier)))
-                .sorted((comparision1, comparision2) -> comparision1.getResult().ordinal() - comparision2.getResult().ordinal()).collect(Collectors.toList());
+                .sorted((comparision1, comparision2) -> comparision1.getResult().ordinal() -
+                        comparision2.getResult().ordinal()).collect(Collectors.toList());
     }
 }

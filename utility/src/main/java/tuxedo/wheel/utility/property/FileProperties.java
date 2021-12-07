@@ -1,11 +1,11 @@
 package tuxedo.wheel.utility.property;
 
+import lombok.NonNull;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
-
-import lombok.NonNull;
 
 public class FileProperties extends BasicProperties {
     public FileProperties(@NonNull String file) throws IOException {

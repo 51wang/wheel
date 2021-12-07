@@ -1,12 +1,11 @@
 package tuxedo.wheel.utility.comparator;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import tuxedo.wheel.utility.base.Pair;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MapComparatorTest {
     @Test

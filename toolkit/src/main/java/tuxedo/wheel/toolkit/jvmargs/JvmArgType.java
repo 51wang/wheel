@@ -3,8 +3,8 @@ package tuxedo.wheel.toolkit.jvmargs;
 import tuxedo.wheel.toolkit.jvmargs.model.JvmArg;
 
 public enum JvmArgType implements JvmArgsUtils, JvmArgsConsts {
-    TYPE_D// -Duser.home=/home/admin
-    {
+    // -Duser.home=/home/admin
+    TYPE_D {
         @Override
         protected JvmArg parse(String raw, String target) {
             if (!target.startsWith(PREFIX_D)) {
@@ -14,8 +14,8 @@ public enum JvmArgType implements JvmArgsUtils, JvmArgsConsts {
             return parseOptionAndValue(raw, target, EQUAL);
         }
     },
-    TYPE_XX_COLON// -XX:+PrintGCDetails -XX:-PrintGCCause -XX:MaxGCPauseMillis=100
-    {
+    // -XX:+PrintGCDetails -XX:-PrintGCCause -XX:MaxGCPauseMillis=100
+    TYPE_XX_COLON {
         @Override
         protected JvmArg parse(String raw, String target) {
             if (!target.startsWith(PREFIX_XX_COLON)) {
@@ -31,8 +31,8 @@ public enum JvmArgType implements JvmArgsUtils, JvmArgsConsts {
             }
         }
     },
-    TYPE_X// -Xloggc:/tmp/gc.log -Xss512k -Xdebug
-    {
+    // -Xloggc:/tmp/gc.log -Xss512k -Xdebug
+    TYPE_X {
         @Override
         protected JvmArg parse(String raw, String target) {
             if (!target.startsWith(PREFIX_X)) {
@@ -46,8 +46,8 @@ public enum JvmArgType implements JvmArgsUtils, JvmArgsConsts {
             }
         }
     },
-    TYPE_COLON// -verbose:gc
-    {
+    // -verbose:gc
+    TYPE_COLON {
         @Override
         protected JvmArg parse(String raw, String target) {
             if (!target.contains(COLON)) {
@@ -56,8 +56,8 @@ public enum JvmArgType implements JvmArgsUtils, JvmArgsConsts {
             return parseOptionAndValue(raw, target, COLON);
         }
     },
-    TYPE_SIMPLE// -server
-    {
+    // -server
+    TYPE_SIMPLE {
         @Override
         protected JvmArg parse(String raw, String target) {
             return new JvmArg(target);
