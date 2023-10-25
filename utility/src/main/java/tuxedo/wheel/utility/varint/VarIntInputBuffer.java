@@ -8,8 +8,7 @@ import java.io.InputStream;
 
 @RequiredArgsConstructor
 public class VarIntInputBuffer {
-    private final @NonNull
-    InputStream is;
+    private final @NonNull InputStream is;
     private final byte[] buf = new byte[1];
 
     public byte[] read(int len) throws IOException {
