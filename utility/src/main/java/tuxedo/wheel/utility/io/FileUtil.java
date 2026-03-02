@@ -7,6 +7,7 @@ import org.apache.tools.ant.taskdefs.Zip;
 import org.apache.tools.ant.types.FileSet;
 
 import java.io.File;
+import java.util.Optional;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class FileUtil {
@@ -28,7 +29,7 @@ public class FileUtil {
         }
 
         if (path.isDirectory()) {
-            for (File child : path.listFiles()) {
+            for (File child : Optional.ofNullable(path.listFiles()).orElseGet(() -> new File[0])) {
                 if (!deleteRecursively(child)) {
                     return false;
                 }

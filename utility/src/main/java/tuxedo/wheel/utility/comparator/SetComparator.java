@@ -2,13 +2,14 @@ package tuxedo.wheel.utility.comparator;
 
 import lombok.NonNull;
 
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Stream;
 
 public interface SetComparator<E> extends ObjectComparator<Set<E>> {
     @Override
     default void compare(@NonNull Set<E> from, @NonNull Set<E> to) {
-        Stream.concat(from.stream(), to.stream()).filter(e -> e != null).distinct().forEach(e -> {
+        Stream.concat(from.stream(), to.stream()).filter(Objects::nonNull).distinct().forEach(e -> {
             if (!from.contains(e)) {
                 added(e);
             } else if (!to.contains(e)) {

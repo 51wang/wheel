@@ -13,10 +13,7 @@ public class FrequencyBasedFunnel implements Funnel {
 
     @Override
     public boolean canDrip() {
-        boolean canDrip = false;
-        if (counter++ == 0) {
-            canDrip = true;
-        }
+        boolean canDrip = counter++ == 0;
         if (counter == frequency) {
             counter = 0;
         }

@@ -9,6 +9,6 @@ public class SetAssembler<E> extends CollectionAssembler<Set<E>, E> {
     }
 
     public SetAssembler() {
-        this(new HashSet<E>());
+        this(new HashSet<>());
     }
 }

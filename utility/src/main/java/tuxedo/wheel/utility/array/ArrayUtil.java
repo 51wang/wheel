@@ -55,7 +55,7 @@ public class ArrayUtil {
     }
 
     public static <T> List<T> asList(@NonNull T[] array) {
-        List<T> list = new ArrayList<T>(array.length);
+        List<T> list = new ArrayList<>(array.length);
         Collections.addAll(list, array);
         return list;
     }
@@ -65,7 +65,7 @@ public class ArrayUtil {
     }
 
     public static <T, R> List<R> unmodifiableList(T[] array, Function<? super T, ? extends R> mapper) {
-        return Collections.unmodifiableList(Arrays.asList(array).stream().map(mapper).collect(Collectors.toList()));
+        return Collections.unmodifiableList(Arrays.stream(array).map(mapper).collect(Collectors.toList()));
     }
 
     public static <T> Set<T> unmodifiableSet(T[] array) {
@@ -73,6 +73,6 @@ public class ArrayUtil {
     }
 
     public static <T, R> Set<R> unmodifiableSet(T[] array, Function<? super T, ? extends R> mapper) {
-        return Collections.unmodifiableSet(Arrays.asList(array).stream().map(mapper).collect(Collectors.toSet()));
+        return Collections.unmodifiableSet(Arrays.stream(array).map(mapper).collect(Collectors.toSet()));
     }
 }

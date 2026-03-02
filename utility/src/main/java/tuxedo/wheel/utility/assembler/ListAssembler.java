@@ -9,6 +9,6 @@ public class ListAssembler<E> extends CollectionAssembler<List<E>, E> {
     }
 
     public ListAssembler() {
-        this(new ArrayList<E>());
+        this(new ArrayList<>());
     }
 }

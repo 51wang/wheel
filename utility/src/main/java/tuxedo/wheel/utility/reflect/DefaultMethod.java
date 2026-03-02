@@ -15,8 +15,8 @@ public class DefaultMethod {
 
     private DefaultMethod(Method method) throws IllegalAccessException {
         Class<?> declaringClass = method.getDeclaringClass();
-        methodHandle = implLookup.in(declaringClass).unreflectSpecial(method, declaringClass).bindTo(Proxy
-                .newProxyInstance(declaringClass.getClassLoader(), new Class[]{declaringClass},
+        methodHandle = implLookup.in(declaringClass).unreflectSpecial(method, declaringClass)
+                .bindTo(Proxy.newProxyInstance(declaringClass.getClassLoader(), new Class[]{declaringClass},
                         (_proxy, _method, _args) -> null));
     }
 

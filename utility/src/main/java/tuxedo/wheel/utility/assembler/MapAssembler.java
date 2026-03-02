@@ -9,7 +9,7 @@ public class MapAssembler<K, V> extends ObjectAssembler<Map<K, V>> {
     }
 
     public MapAssembler() {
-        this(new HashMap<K, V>());
+        this(new HashMap<>());
     }
 
     public MapAssembler<K, V> put(K key, V value) {

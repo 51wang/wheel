@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class JointProperties implements Properties {
@@ -16,7 +17,7 @@ public class JointProperties implements Properties {
     }
 
     public JointProperties(@NonNull List<Properties> sources) {
-        this.sources = sources.stream().filter(p -> p != null).distinct().collect(Collectors.toList());
+        this.sources = sources.stream().filter(Objects::nonNull).distinct().collect(Collectors.toList());
     }
 
     @Override
@@ -33,9 +34,7 @@ public class JointProperties implements Properties {
     public Map<String, String> getProperties() {
         Map<String, String> all = new HashMap<>();
         for (Properties properties : sources) {
-            properties.getProperties().forEach((key, value) -> {
-                all.putIfAbsent(key, value);
-            });
+            properties.getProperties().forEach(all::putIfAbsent);
         }
         return all;
     }

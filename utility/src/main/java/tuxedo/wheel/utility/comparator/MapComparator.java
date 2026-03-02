@@ -3,12 +3,13 @@ package tuxedo.wheel.utility.comparator;
 import lombok.NonNull;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Stream;
 
 public interface MapComparator<K, V> extends ObjectComparator<Map<K, V>> {
     @Override
     default void compare(@NonNull Map<K, V> from, @NonNull Map<K, V> to) {
-        Stream.concat(from.keySet().stream(), to.keySet().stream()).filter(key -> key != null).distinct().forEach(k -> {
+        Stream.concat(from.keySet().stream(), to.keySet().stream()).filter(Objects::nonNull).distinct().forEach(k -> {
             V _from = from.get(k);
             V _to = to.get(k);
             if (_from == null) {
